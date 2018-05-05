@@ -81,7 +81,6 @@ EOF
 
 # create zclassic.conf
 cd ~
-mkdir .zclassic
 touch .zclassic/zclassic.conf
 
 cat << EOF > $HOME/.zclassic/zclassic.conf

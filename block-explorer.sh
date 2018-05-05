@@ -3,12 +3,12 @@
 echo "downloading part2"
 echo
 
-wget https://raw.githubusercontent.com/GRinvest/zelcash-block-explorer/master/block-explorer-part2.sh
+wget https://raw.githubusercontent.com/GRinvest/equihash-block-explorer/zclassic/block-explorer-part2.sh
 
 echo "---------------"
 # Install zelcash dependencies:
 
-echo "installing zelcash"
+echo "installing zclassic"
 echo
 
 sudo apt-get -y --force-yes install \
@@ -21,21 +21,21 @@ sudo apt-get update
 sudo apt-get -y --force-yes install g++-4.9 
 
 # download zcash source from fork with block explorer patches
-git clone https://github.com/zelcash/zelcash.git
+git clone https://github.com/z-classic/zclassic.git
 git clone https://gitlab.com/zcashcommunity/params.git
 
-cd zelcash
+cd zclassic
 chmod +x zcutil/build.sh depends/config.guess depends/config.sub autogen.sh share/genbuild.sh src/leveldb/build_detect_platform
-./zcutil/build.sh --disable-rust -j$(nproc)
+./zcutil/build.sh -j$(nproc)
 
 # install safecoin
-sudo cp src/zelcashd /usr/local/bin/
-sudo cp src/zelcash-cli /usr/local/bin/
+sudo cp src/zcashd /usr/local/bin/
+sudo cp src/zcash-cli /usr/local/bin/
 
 cd
-mkdir .zelcash
-mkdir .zelcash-params
-cd .zelcash-params
+mkdir .zclassic
+mkdir .zcash-params
+cd .zcash-params
 sudo cp ~/params/sprout-proving.key .
 sudo cp ~/params/sprout-verifying.key .
 
