@@ -3,7 +3,7 @@
 echo "downloading part2"
 echo
 
-wget https://raw.githubusercontent.com/GRinvest/zelcash-block-explorer/master/block-explorer-part2
+wget https://raw.githubusercontent.com/GRinvest/zelcash-block-explorer/master/block-explorer-part2.sh
 
 echo "---------------"
 # Install zelcash dependencies:
