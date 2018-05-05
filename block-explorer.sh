@@ -4,6 +4,7 @@ echo "downloading part2"
 echo
 
 wget https://raw.githubusercontent.com/GRinvest/equihash-block-explorer/zclassic/block-explorer-part2.sh
+chmod 0700 block-explorer-part2.sh
 
 echo "---------------"
 # Install zelcash dependencies:
