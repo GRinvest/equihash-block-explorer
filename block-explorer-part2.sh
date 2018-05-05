@@ -28,23 +28,23 @@ sudo apt-get -y install libzmq3-dev
 echo "---------------"
 echo "installing zelcash patched bitcore"
 echo 
-npm install zelcash/bitcore-node-zelcash
+npm install z-classic/bitcore-node-zclassic
 
 echo "---------------"
 echo "setting up bitcore"
 echo
 
 # setup bitcore
-./node_modules/bitcore-node-zelcash/bin/bitcore-node create zelcash-explorer
+./node_modules/bitcore-node-zclassic/bin/bitcore-node create zclassic-explorer
 
-cd zelcash-explorer
+cd zclassic-explorer
 
 
 echo "---------------"
 echo "installing insight UI"
 echo
 
-../node_modules/bitcore-node-zelcash/bin/bitcore-node install zelcash/insight-api-zelcash zelcash/insight-ui-zelcash
+./node_modules/bitcore-node-zclassic/bin/bitcore-node install z-classic/insight-api-zclassic z-classic/insight-ui-zclassic
 
 
 echo "---------------"
@@ -58,15 +58,15 @@ cat << EOF > bitcore-node.json
   "port": 3001,
   "services": [
     "bitcoind",
-    "insight-api-zelcash",
-    "insight-ui-zelcash",
+    "insight-api-zclassic",
+    "insight-ui-zclassic",
     "web"
   ],
   "servicesConfig": {
     "bitcoind": {
       "spawn": {
-        "datadir": "$HOME/.zelcash",
-        "exec": "zelcashd"
+        "datadir": "$HOME/.zclassic",
+        "exec": "$HOME/zclassic/src/zcashd"
       }
     },
      "insight-ui-zelcash": {
@@ -79,12 +79,12 @@ cat << EOF > bitcore-node.json
 }
 EOF
 
-# create safecoin.conf
+# create zclassic.conf
 cd ~
-mkdir .zelcash
-touch .zelcash/zelcash.conf
+mkdir .zclassic
+touch .zclassic/zclassic.conf
 
-cat << EOF > $HOME/.zelcash/zelcash.conf
+cat << EOF > $HOME/.zclassic/zclassic.conf
 server=1
 whitelist=127.0.0.1
 txindex=1
@@ -94,17 +94,12 @@ spentindex=1
 zmqpubrawtx=tcp://127.0.0.1:28769
 zmqpubhashblock=tcp://127.0.0.1:28769
 rpcallowip=127.0.0.1
-rpcport=7201
+rpcport=7301
 rpcuser=User_name
 rpcpassword=You_pass
 uacomment=bitcore
 showmetrics=0
 maxconnections=1000
-addnode=node.zel.cash
-addnode=45.63.86.148
-addnode=199.247.8.181
-addnode=45.76.128.62
-addnode=45.76.186.252
 
 EOF
 
